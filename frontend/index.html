@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acoustic Anomaly Detector</title>
+    <!-- Custom Webfont Managed By style.css -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-blob blob-1"></div>
+    <div class="background-blob blob-2"></div>
+    
+    <main class="container">
+        <header>
+            <div class="badge">AI Powered</div>
+            <h1>Urban Acoustic <span class="gradient-text">Anomaly Detection</span></h1>
+            <p class="subtitle">Upload a raw urban audio sample (`.wav`) to analyze it for critical anomalous events using Deep Learning.</p>
+        </header>
+
+        <section class="upload-section glass-panel">
+            <div id="drop-zone" class="drop-zone">
+                <div class="upload-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                </div>
+                <h3>Drag & Drop your audio file here</h3>
+                <p>or click to browse from your device</p>
+                <input type="file" id="file-input" accept=".wav" hidden>
+            </div>
+            
+            <div class="audio-preview hidden" id="audio-preview">
+                <p class="filename" id="filename-display"></p>
+                <audio id="audio-player" controls></audio>
+                <button class="btn secondary" id="reset-btn">Clear</button>
+            </div>
+        </section>
+
+        <!-- Loading State -->
+        <div id="loading-state" class="hidden">
+            <div class="spinner"></div>
+            <p>Analyzing audio frequencies...</p>
+        </div>
+
+        <!-- Results Dashboard -->
+        <section id="results-dashboard" class="results-grid hidden">
+            <!-- Spectrogram Image -->
+            <div class="glass-panel result-card">
+                <h2>Mel-Spectrogram</h2>
+                <div class="image-container">
+                    <img id="spectrogram-graph" src="" alt="Spectrogram representation of audio">
+                </div>
+            </div>
+
+            <!-- AI Predictions -->
+            <div class="glass-panel result-card">
+                <h2>Model Prediction</h2>
+                <div class="prediction-stats">
+                    <div class="stat-row">
+                        <label>Normal Scene</label>
+                        <span id="normal-pct">0%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar fill-normal" id="normal-bar" style="width: 0%"></div>
+                    </div>
+
+                    <div class="stat-row mt-4">
+                        <label>Anomaly Detected</label>
+                        <span id="anomaly-pct">0%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar fill-anomaly" id="anomaly-bar" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div id="alert-box" class="alert-box success">
+                    <i>✓</i>
+                    <span>Audio is completely normal.</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
