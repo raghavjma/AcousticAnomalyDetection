@@ -32,3 +32,10 @@ A custom-trained **PyTorch Convolutional Neural Network (CNN)**—built specific
 ```bash
 git clone https://github.com/raghav812/AcousticAnomalyDetection.git
 cd AcousticAnomalyDetection
+
+### 2. Environment Setup
+It is highly recommended to use a virtual environment.
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
